@@ -33,7 +33,7 @@ public class ObservableTest {
 		
 		Observable<BigInteger> naturalNumbers = Observable.create(subscriber -> {
 			Runnable runnable = () -> {
-				BigInteger i = BigInteger.ZERO;
+				BigInteger i = BigInteger.ONE;
 				while(!subscriber.isDisposed()) {
 					subscriber.onNext(i);
 					i = i.add(BigInteger.ONE);
