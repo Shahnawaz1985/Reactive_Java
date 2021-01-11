@@ -1,6 +1,7 @@
 package com.eric.functional.reactive.util;
 
 import java.math.BigInteger;
+import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
@@ -56,6 +57,19 @@ public class ObservableTest {
 		
 		System.out.println("Thread Interruption triggered!");
 		disposable.dispose();
+		
+		Observable<Long> obs_interval = Observable.interval(1_000_000/60, TimeUnit.MILLISECONDS);
+		Disposable dispsble = obs_interval.subscribe(l -> log("long :"+l));
+		
+		try {			
+			Thread.sleep(500);			
+		} catch (InterruptedException ex) {			
+			
+			ex.printStackTrace();
+		}
+		
+		dispsble.dispose();
+		
 	}
 	
 	private static void log(String message) {
