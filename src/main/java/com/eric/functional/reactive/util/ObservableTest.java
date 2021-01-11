@@ -15,8 +15,16 @@ public class ObservableTest {
 		subscribe(i -> { log("Element : "+i); });
 		log("After");
 		
-		Observable<Integer> it = Observable.just(23);
-		it.subscribe(a -> System.out.println("Testing Observable.just() : "+a));
+		Observable<Integer> it = Observable.create(subscriber -> {
+			log("Starting");
+			subscriber.onNext(37);
+			subscriber.onNext(41);
+			subscriber.onComplete();
+		});
+		
+		System.out.println("-------------------------------------------");
+		it.subscribe(a -> log("Element A :"+a));
+		it.subscribe(a -> log("Element B :"+a));
 	}
 	
 	private static void log(String message) {
