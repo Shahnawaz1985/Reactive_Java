@@ -2,7 +2,6 @@ package com.eric.functional.reactive.util;
 
 import java.math.BigInteger;
 import java.util.concurrent.TimeUnit;
-
 import io.reactivex.Observable;
 import io.reactivex.disposables.Disposable;
 
@@ -51,7 +50,6 @@ public class ObservableTest {
 		try {			
 			Thread.sleep(1000);			
 		} catch (InterruptedException ex) {			
-			
 			ex.printStackTrace();
 		}
 		
@@ -64,12 +62,10 @@ public class ObservableTest {
 		try {			
 			Thread.sleep(500);			
 		} catch (InterruptedException ex) {			
-			
 			ex.printStackTrace();
 		}
 		
 		dispsble.dispose();
-		
 	}
 	
 	private static void log(String message) {
